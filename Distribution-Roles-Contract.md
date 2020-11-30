@@ -30,7 +30,7 @@ candidates are ranked and paid according to the staked voting weight they have r
 A voter's weight is calculated as ```staked balance + pending unstake balance + delegations in```
 
 The distribution batch only accepts tokens defined in its configuration, and is limited to one staked token
-per contract. The distribution can be deactivated (suspended), during which time
+per instance. The distribution can be deactivated (suspended), during which time
 new deposits are rejected and payouts are not made. If no eligible candidates are available, the contract will hold the token value until the next deposit and determination of voting weights.
 
 # Actions available
