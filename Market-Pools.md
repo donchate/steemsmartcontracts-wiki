@@ -21,7 +21,7 @@ Documentation written by [donchate](https://github.com/donchate)
 # Introduction
 
 This contract implements a constant product formula (CPF) automated market maker (AMM).
-The AMM holds quantities of Hive Engine tokens whose relative price is measured according to its reserves.A constant product pricing function maps the quantities of theassets in reserves to their marginal price.
+The AMM holds quantities of Hive Engine tokens whose relative price is measured according to its reserves. A constant product pricing function maps the quantities of the assets in reserves to their marginal price.
 Hive Engine token holders may trade using this smart contract at the price specified by the pricing function, which is continually updated as reserves change after each trade.
 They may also provide liquidity to allow for a certain pair of tokens to be traded.
 
@@ -100,7 +100,8 @@ A trader may wish to send an exact amount of tokens to the swap contract, and re
 To provide the resources for trading to occur, liquidity must be sent and stored by the smart contract.
 
 ### addLiquidity
-This action will send both tokens in a given pair to the smart contract to provide liquidity for traders to swap tokens. If this is being called on a newly created market pool, the initial liquidity provider sets the starting price for the pair. At all other times, liquidity can only be added in such a way that the trading price is maintained.
+This action will send both tokens in a given pair to the smart contract to provide liquidity for traders to swap tokens. If this is being called on a newly created market pool, the initial liquidity provider sets the starting price for the pair. If the pair tokens have orders in the HE order book, the initial price will be compared to the last price on the order book market for deviation beyond a specified value.
+For existing pools, liquidity can only be added in such a way that the trading price is maintained.
 
 * requires active key: yes
 * can be called by: anyone
