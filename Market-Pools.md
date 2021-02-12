@@ -162,7 +162,7 @@ contains the instance configurations
   * active = whether pool is active or suspended
   * creator = account name of initial pool creator
 
-## liquidityPositions:
+## liquidityPosition:
 * fields
   * _id = MongoDB internal primary key
   * account = account name of the LP
