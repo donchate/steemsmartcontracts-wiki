@@ -15,6 +15,7 @@ Documentation written by [donchate](https://github.com/donchate)
   * [removeLiquidity](#removeLiquidity)
 * [Rewarding Liquidity Providers](#rewarding-liquidity-providers)
   * [createRewardPool](#createRewardPool)
+  * [updateRewardPool](#updateRewardPool)
 * [Interface Integration](#interface-integration)
   * [Determining minimum amounts](#determining-minimum-amounts)
   * [Adding Liquidity](#adding-liquidity)
@@ -171,6 +172,31 @@ The pool is automatically activated upon creation. A fee of 1000 BEE is required
   "lotteryWinners": 20,
   "lotteryIntervalHours": 1,
   "lotteryAmount": "1",
+  "minedToken": "GLD",
+  "isSignedWithActiveKey": true
+}
+```
+
+### updateRewardPool
+This action allows a token issuer to update an existing reward system.
+A fee of 100 BEE is required.
+
+* requires active key: yes
+* can be called by: token issuer
+* parameters:
+  * tokenPair (string): Trading pair name describing the two tokens that will be paired in the format ```TOKEN1:TOKEN2```
+  * lotteryWinners (integer >= 1 and <= 20): Number of lottery winners per round.
+  * lotteryIntervalHours (integer >= 1 and <= 720): How often in hours to run a lottery.
+  * lotteryAmount (string): Amount to pay out per round. Split among lotteryWinners winners.
+  * minedToken (string): issued token as specified when creating original pool. _Note: this cannot be updated or changed. To issue a new token you must disable and create a new reward pool_
+
+* example:
+```
+{
+  "tokenPair": "GLD:SLV",
+  "lotteryWinners": 10,
+  "lotteryIntervalHours": 1,
+  "lotteryAmount": "10",
   "minedToken": "GLD",
   "isSignedWithActiveKey": true
 }
